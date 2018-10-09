@@ -45,7 +45,7 @@ def coefficent_of_determination(ys_origin, ys_line):
 m, b = best_fit_slope_and_intercept(xs, ys)
 regression_line = [(m * x) + b for x in xs]
 
-# Get squared error of regression line
+# Get coefficent of determination of regression line
 regression_squared_error = coefficent_of_determination(ys, regression_line)
 print(regression_squared_error)
 
