@@ -1,5 +1,5 @@
 # Machine Learning
-Collection of algorithms and completed tutorials for machine learning
+Collection of algorithms and completed tutorials.
 
 This collection will expand as I go. I'll do my best to document every piece of code as good as I can so maybe it would be useful for someone.
 ## Used articles
