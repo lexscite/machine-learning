@@ -1,4 +1,4 @@
-# Regression.
+# Regression
 
 # Regression analisys - form of supervised
 # machine learning. Performs by showing the machine features
@@ -6,27 +6,28 @@
 # machine is being tested by measuring the ration of correct
 # answers.
 
+# STL
 import math
 import datetime
-# Data analysis lib.
+# Data analysis lib
 import pandas as pd
-# Sci-computing lib (N-dimensional array).
+# Sci-computing lib (N-dimensional array)
 import numpy as np
-# Financial data providing lib.
+# Financial data providing lib
 import quandl
-# SciKit machine learning lib.
+# SciKit machine learning lib
 from sklearn import preprocessing, svm, linear_model
 from sklearn.model_selection import train_test_split
-# Graphing lib.
+# Graphing lib
 import matplotlib.pyplot as plt
 from matplotlib import style
 
 # By default quandl offers 50 api request a day. To expand requests
 # number register at quandl.com and set your api key with
 # quandl.ApiConfig.api_key = {your api key}
-# and mark it with gitignoreline line commentary
+# and mark it with gitignoreline line commentary.
 
-# Get data from quandl server
+# Get data from quandl server.
 df = quandl.get("WIKI/GOOGL")
 # High - low percent.
 df['HL_PCT'] = (df['Adj. High'] - df['Adj. Low']) / \
@@ -54,7 +55,7 @@ df['label'] = df[forecast_col].shift(-forecast_out)
 X = np.array(df.drop(['label'], 1))
 # Scale X to be in range of (-1, 1).
 X = preprocessing.scale(X)
-# Slice most recent features from array to predict against
+# Slice most recent features from array to predict against.
 X_recent = X[-forecast_out:]
 X = X[:-forecast_out]
 
@@ -68,7 +69,7 @@ y = np.array(df['label'])
 X_train, X_test, y_train, y_test = \
   train_test_split(X, y, test_size=0.2)
 
-# Add forecast col into data frame
+# Add forecast col into data frame.
 df['Forecast'] = np.nan
 last_date = df.iloc[-1].name
 last_unix = last_date.timestamp()
@@ -89,16 +90,16 @@ clf.fit(X_train, y_train)
 # Test classifier.
 confidence = clf.score(X_test, y_test)
 
-# Predicted forecasts array
+# Predicted forecasts array.
 forecast_set = clf.predict(X_recent)
 print("LR confidence = {}".format(confidence))
-# Bind forecasts to days
+# Bind forecasts to days.
 for f in forecast_set:
   next_date = datetime.datetime.fromtimestamp(next_unix)
   next_unix += one_day
   df.loc[next_date] = [np.nan for _ in range(len(df.columns) - 1)] + [f]
 
-# Build graph
+# Build graph.
 style.use('ggplot')
 df['Adj. Close'].plot()
 df['Forecast'].plot()
@@ -106,4 +107,3 @@ plt.legend(loc=4)
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.show()
-mdcmcdm

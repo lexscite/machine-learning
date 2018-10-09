@@ -1,12 +1,12 @@
-# Dataset.
+# Dataset
 
 # Collection of instructions to manipultate data sets.
 
 import random
-# Sci-computing lib (N-dimensional array).
+# Sci-computing lib (N-dimensional array)
 import numpy as np
 
-# Generates some random data set.
+# Generates random data set.
 def generate_random_dataset(size, variance, step=2, correlation=False):
   val = 1
   ys = []
