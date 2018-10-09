@@ -68,9 +68,6 @@ y = np.array(df['label'])
 X_train, X_test, y_train, y_test = \
   train_test_split(X, y, test_size=0.2)
 
-# Set style of graph.
-style.use('ggplot')
-
 # Add forecast col into data frame
 df['Forecast'] = np.nan
 last_date = df.iloc[-1].name
@@ -102,6 +99,7 @@ for f in forecast_set:
   df.loc[next_date] = [np.nan for _ in range(len(df.columns) - 1)] + [f]
 
 # Build graph
+style.use('ggplot')
 df['Adj. Close'].plot()
 df['Forecast'].plot()
 plt.legend(loc=4)
