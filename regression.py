@@ -1,4 +1,4 @@
-# Regression
+# Regression.
 
 # Regression analisys - form of supervised
 # machine learning. Performs by showing the machine features
