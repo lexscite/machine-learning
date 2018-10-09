@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 #By default quandl offers 50 api request a day. To expand requests
 #number register at quandl.com and set your api key with
 #quandl.ApiConfig.api_key = {your api key}
+#and mark it with gitignoreline line commentary
 
 #Get data from quandl server
 df = quandl.get("WIKI/GOOGL")
@@ -57,19 +58,15 @@ y = numpy.array(df['label'])
 X_train, X_test, y_train, y_test = \
     train_test_split(X, y, test_size=0.2)
 
-#Define classifier (uncomment needed).
-
-#Support Vector Regression.
-#clfname = "SRV"
-#clf = svm.SVR(gamma='auto')
-
-#LinearRegression.
-clfname = "LinearRegression"
+#Linear regression.
 clf = linear_model.LinearRegression()
-
-#Train classifier.
 clf.fit(X_train, y_train)
-#Test classifier.
 confidence = clf.score(X_test, y_test)
+print("Linear regression confidence = {}".format(confidence))
 
-print("{} confidence = {}".format(clfname, confidence))
+#Support vector regression.
+for k in ['linear', 'poly', 'rbf', 'sigmoid']:
+  clf = svm.SVR(gamma='auto', kernel=k)
+  clf.fit(X_train, y_train)
+  confidence = clf.score(X_test, y_test)
+  print("SRV ({}) confidence = {}".format(k, confidence))
