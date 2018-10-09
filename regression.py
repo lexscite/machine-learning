@@ -8,16 +8,16 @@
 
 import math
 import datetime
-#Data analysis lib.
+# Data analysis lib.
 import pandas as pd
-#Sci-computing lib (N-dimensional array).
+# Sci-computing lib (N-dimensional array).
 import numpy as np
-#Financial data providing lib.
+# Financial data providing lib.
 import quandl
-#SciKit machine learning lib.
+# SciKit machine learning lib.
 from sklearn import preprocessing, svm, linear_model
 from sklearn.model_selection import train_test_split
-#Graphing lib.
+# Graphing lib.
 import matplotlib.pyplot as plt
 from matplotlib import style
 
@@ -108,3 +108,4 @@ plt.legend(loc=4)
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.show()
+mdcmcdm
