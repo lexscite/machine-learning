@@ -1,4 +1,0 @@
-Regression (regression analysis) - form of supervised
-machine learning. Performs by showing the machine features
-and then showing it what the correct answer is. After that
-machine is being tested by measuring the ratio of correct answers.
